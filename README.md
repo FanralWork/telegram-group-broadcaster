@@ -1,14 +1,14 @@
-# Telegram Broadcaster
+# Автоматизация сообщений в Telegram
 
-A private Telegram user-account automation prototype with group filters, delivery intervals, and optional GigaChat integration.
+Учебный прототип на Telethon для работы с сообщениями от имени пользовательского аккаунта. Поддерживает фильтры групп, интервалы отправки и опциональное использование GigaChat.
 
-## Stack and architecture
+## Устройство
 
-`main.py` reads YAML configuration and starts the asynchronous Telethon client. `broadcaster.py` handles chat selection, message preparation, and delivery. `logger.py` configures console and optional file logging. The sample configuration includes settings for a test group and a local message template.
+`main.py` читает конфигурацию YAML и запускает асинхронный клиент Telethon. В `broadcaster.py` находятся выбор чатов, подготовка сообщений и отправка. `logger.py` настраивает вывод в консоль и, при необходимости, в файл. В комплекте есть пример конфигурации тестовой группы и шаблон сообщения.
 
-## Local setup and verification
+## Установка и локальная проверка
 
-Use Python 3.13 and install the versions in `requirements.txt`.
+Используйте Python 3.13 и зависимости из `requirements.txt`.
 
 ```powershell
 python -m venv .venv
@@ -16,16 +16,12 @@ python -m venv .venv
 .\.venv\Scripts\python.exe main.py --help
 ```
 
-For an account-level check, copy `config.example.yaml` to the ignored `config.yaml`, fill in the Telegram settings locally, and set the filter to the name of a group you control. The dry-run command may authenticate the account and create a Telethon session file. It does not send messages.
+Для проверки на своём аккаунте скопируйте `config.example.yaml` в локальный `config.yaml`, внесите параметры Telegram и настройте фильтр на тестовую группу, которой вы управляете. В тестовом режиме программа может запросить авторизацию и создать файл сессии Telethon. Сообщения в этом режиме не отправляются.
 
 ```powershell
 .\.venv\Scripts\python.exe main.py --config config.yaml --dry-run
 ```
 
-## Status and limitations
+## Статус и ограничения
 
-This is a private prototype. Account credentials, session files, chat names from logs, and real message templates belong in local storage. Optional GigaChat calls send prompts to an external service. The review verified CLI startup without signing in or sending messages.
-
-## Кратко для портфолио
-
-Закрытый эксперимент по автоматизации Telegram с фильтрацией групп, журналированием и опциональной генерацией текста через GigaChat. Применение требует контроля получателей и учётных данных.
+Учётные данные, сессии, рабочие шаблоны и журналы с именами чатов предназначены для локального хранения. При включённой интеграции GigaChat передаёт запросы внешнему сервису. В аудите проверен запуск CLI с флагом `--help`. Вход в Telegram и отправка сообщений не проверялись.
