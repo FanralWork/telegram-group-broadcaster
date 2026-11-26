@@ -1,0 +1,25 @@
+telegram:
+  api_id: 0
+  api_hash: ""
+  session: "telegram"
+
+gigachat:
+  authorization_key: ""
+  ca_bundle_file: ""
+
+message_templates:
+  file: "messages.example.json"
+
+filters:
+  include_keywords: ["Тестовая группа для рассылки"]
+  exclude_keywords: []
+  min_participants: 1
+  max_participants: 3000
+
+limits:
+  per_message_interval:
+    min: 600
+    max: 610
+
+logging:
+  level: "INFO"
